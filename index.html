@@ -3,12 +3,76 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>English Learning Workspace</title>
+  <meta name="description" content="A focused English exam-revision practice page.">
+  <title>English Exam Revision</title>
+  <style>
+    :root { --ink:#1d2433; --muted:#5d6678; --paper:#fffdf8; --sky:#e9f5ff; --navy:#164b7a; --gold:#f7c948; --ok:#146c43; --bad:#b42318; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:#f4f8fb; font:17px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { width:min(900px,calc(100% - 32px)); margin:0 auto; padding:40px 0 56px; }
+    header { background:var(--navy); color:white; padding:38px clamp(24px,6vw,60px); border-radius:22px; box-shadow:0 12px 28px #18344a33; }
+    h1,h2,h3 { line-height:1.15; } h1 { margin:0 0 12px; font-size:clamp(2rem,6vw,3.35rem); } h2 { margin-top:0; color:var(--navy); }
+    .lead { margin:0; font-size:1.12rem; max-width:650px; } .tag { display:inline-block; margin-bottom:14px; padding:4px 11px; border-radius:999px; background:#ffffff25; font-weight:700; font-size:.85rem; letter-spacing:.03em; }
+    section { margin-top:24px; padding:28px; background:var(--paper); border:1px solid #dce7ef; border-radius:18px; box-shadow:0 3px 12px #19354a0b; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; } .card { padding:17px; background:var(--sky); border-radius:12px; } .card h3 { margin:0 0 5px; color:var(--navy); font-size:1rem; }
+    .tip { border-left:5px solid var(--gold); padding:12px 16px; margin:18px 0 0; background:#fff7dc; border-radius:0 9px 9px 0; } code { font-size:.95em; background:#eef1f5; padding:1px 5px; border-radius:4px; }
+    .question { margin:18px 0; padding:18px; border:1px solid #dce7ef; border-radius:12px; } label { display:block; margin:8px 0; cursor:pointer; } input[type="radio"] { margin-right:8px; accent-color:var(--navy); }
+    button { border:0; border-radius:9px; padding:12px 18px; background:var(--navy); color:white; font:inherit; font-weight:700; cursor:pointer; } button:hover,button:focus-visible { background:#0e365a; outline:3px solid #9fcbed; outline-offset:2px; } .secondary { margin-left:8px; background:#687286; }
+    #result { min-height:1.6em; margin:18px 0 0; font-weight:750; } .correct { color:var(--ok); } .incorrect { color:var(--bad); } .answer { display:none; margin-top:11px; color:var(--muted); font-size:.95rem; } .answer.visible { display:block; }
+    .checklist { padding-left:24px; } .checklist li { margin:9px 0; } footer { text-align:center; color:var(--muted); font-size:.9rem; padding-top:20px; }
+  </style>
 </head>
 <body>
   <main>
-    <h1>English Learning Workspace</h1>
-    <p>This workspace is being prepared. Lesson content will be added after the learning plan is agreed.</p>
+    <header>
+      <span class="tag">EXAM REVISION</span>
+      <h1>English revision practice</h1>
+      <p class="lead">Use this short page to review key language before and after exam week. Read the reminders, complete the practice, then check what to revisit.</p>
+    </header>
+    <section aria-labelledby="review-heading">
+      <h2 id="review-heading">Quick review</h2>
+      <div class="grid">
+        <article class="card"><h3>Articles: a / the</h3><p>Use <strong>a</strong> for one thing in general: <em>a book</em>. Use <strong>the</strong> for a specific thing: <em>the book on the desk</em>.</p></article>
+        <article class="card"><h3>Present simple</h3><p>Positive: <em>I play</em>; <em>she plays</em>. Negative: <em>do not / don’t</em>, <em>does not / doesn’t</em>. Questions: <em>Do you…?</em> / <em>Does he…?</em></p></article>
+        <article class="card"><h3>Contractions</h3><p><em>I’m, you’re, he’s, we’re</em>; <em>don’t, doesn’t</em>. In a negative present-simple sentence, use <em>doesn’t + base verb</em>.</p></article>
+        <article class="card"><h3>Frequency &amp; time</h3><p><em>always, usually, often, sometimes, never</em>. Say <em>in the morning</em>, <em>at 7 o’clock</em>, <em>on Monday</em>.</p></article>
+      </div>
+      <p class="tip"><strong>Remember:</strong> With <em>he / she / it</em>, add <code>-s</code> in a positive sentence: <em>She reads.</em> But after <em>doesn’t</em> or <em>does</em>, use the base verb: <em>She doesn’t read.</em></p>
+    </section>
+    <section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Practice check</h2>
+      <p>Choose the best answer for each sentence. Try without looking back at the review.</p>
+      <form id="quiz">
+        <fieldset class="question"><legend>1. I have ___ grammar book.</legend><label><input type="radio" name="q1" value="a"> a</label><label><input type="radio" name="q1" value="the"> the</label><p class="answer">Answer: <strong>a</strong>. This is one grammar book in general.</p></fieldset>
+        <fieldset class="question"><legend>2. My brother ___ to school at 8 o’clock.</legend><label><input type="radio" name="q2" value="go"> go</label><label><input type="radio" name="q2" value="goes"> goes</label><p class="answer">Answer: <strong>goes</strong>. <em>My brother</em> is he, so the verb takes <code>-s</code>.</p></fieldset>
+        <fieldset class="question"><legend>3. She ___ coffee in the evening.</legend><label><input type="radio" name="q3" value="doesn't drink"> doesn’t drink</label><label><input type="radio" name="q3" value="doesn't drinks"> doesn’t drinks</label><p class="answer">Answer: <strong>doesn’t drink</strong>. After <em>doesn’t</em>, use the base verb.</p></fieldset>
+        <fieldset class="question"><legend>4. ___ they play football on Fridays?</legend><label><input type="radio" name="q4" value="Do"> Do</label><label><input type="radio" name="q4" value="Does"> Does</label><p class="answer">Answer: <strong>Do</strong>. Use <em>Do</em> with <em>they</em>.</p></fieldset>
+        <fieldset class="question"><legend>5. We ___ eat breakfast before school.</legend><label><input type="radio" name="q5" value="usually"> usually</label><label><input type="radio" name="q5" value="usually are"> usually are</label><p class="answer">Answer: <strong>usually</strong>. An adverb of frequency usually comes before the main verb: <em>We usually eat…</em></p></fieldset>
+        <fieldset class="question"><legend>6. I do my homework ___ the evening.</legend><label><input type="radio" name="q6" value="in"> in</label><label><input type="radio" name="q6" value="at"> at</label><p class="answer">Answer: <strong>in</strong>: <em>in the evening</em>.</p></fieldset>
+        <button type="submit">Check my answers</button><button type="reset" class="secondary">Try again</button>
+        <p id="result" aria-live="polite"></p>
+      </form>
+    </section>
+    <section aria-labelledby="next-heading">
+      <h2 id="next-heading">After the check</h2>
+      <ul class="checklist"><li>Review every answer you missed and say the corrected sentence aloud.</li><li>Write one positive sentence, one negative sentence, and one question about your usual day.</li><li>Make a short list of exam vocabulary to review before the next lesson.</li></ul>
+    </section>
+    <footer>Focused revision: articles, present simple, contractions, frequency adverbs, and time expressions.</footer>
   </main>
+  <script>
+    const answers = { q1: 'a', q2: 'goes', q3: "doesn't drink", q4: 'Do', q5: 'usually', q6: 'in' };
+    const quiz = document.querySelector('#quiz');
+    quiz.addEventListener('submit', (event) => {
+      event.preventDefault(); let score = 0;
+      Object.entries(answers).forEach(([name, answer]) => {
+        const chosen = quiz.elements[name].value;
+        const item = quiz.elements[name][0].closest('.question');
+        item.classList.toggle('correct', chosen === answer); item.classList.toggle('incorrect', chosen && chosen !== answer);
+        if (chosen === answer) score += 1; item.querySelector('.answer').classList.add('visible');
+      });
+      document.querySelector('#result').textContent = `You got ${score} out of ${Object.keys(answers).length}. Review the explanations, then try again if you want more practice.`;
+    });
+    quiz.addEventListener('reset', () => { document.querySelectorAll('.answer').forEach((answer) => answer.classList.remove('visible')); document.querySelectorAll('.question').forEach((question) => question.classList.remove('correct', 'incorrect')); document.querySelector('#result').textContent = ''; });
+  </script>
 </body>
 </html>
