@@ -43,12 +43,12 @@
       <h2 id="practice-heading">Practice check</h2>
       <p>Choose the best answer for each sentence. Try without looking back at the review.</p>
       <form id="quiz">
-        <fieldset class="question"><legend>1. I have ___ grammar book.</legend><label><input type="radio" name="q1" value="a"> a</label><label><input type="radio" name="q1" value="the"> the</label><p class="answer">Answer: <strong>a</strong>. This is one grammar book in general.</p></fieldset>
-        <fieldset class="question"><legend>2. My brother ___ to school at 8 o’clock.</legend><label><input type="radio" name="q2" value="go"> go</label><label><input type="radio" name="q2" value="goes"> goes</label><p class="answer">Answer: <strong>goes</strong>. <em>My brother</em> is he, so the verb takes <code>-s</code>.</p></fieldset>
-        <fieldset class="question"><legend>3. She ___ coffee in the evening.</legend><label><input type="radio" name="q3" value="doesn't drink"> doesn’t drink</label><label><input type="radio" name="q3" value="doesn't drinks"> doesn’t drinks</label><p class="answer">Answer: <strong>doesn’t drink</strong>. After <em>doesn’t</em>, use the base verb.</p></fieldset>
-        <fieldset class="question"><legend>4. ___ they play football on Fridays?</legend><label><input type="radio" name="q4" value="Do"> Do</label><label><input type="radio" name="q4" value="Does"> Does</label><p class="answer">Answer: <strong>Do</strong>. Use <em>Do</em> with <em>they</em>.</p></fieldset>
-        <fieldset class="question"><legend>5. We ___ eat breakfast before school.</legend><label><input type="radio" name="q5" value="usually"> usually</label><label><input type="radio" name="q5" value="usually are"> usually are</label><p class="answer">Answer: <strong>usually</strong>. An adverb of frequency usually comes before the main verb: <em>We usually eat…</em></p></fieldset>
-        <fieldset class="question"><legend>6. I do my homework ___ the evening.</legend><label><input type="radio" name="q6" value="in"> in</label><label><input type="radio" name="q6" value="at"> at</label><p class="answer">Answer: <strong>in</strong>: <em>in the evening</em>.</p></fieldset>
+        <fieldset class="question"><legend>1. A shop assistant asks if you need anything. You say: “Yes, I need ___ notebook, please.”</legend><label><input type="radio" name="q1" value="a"> a</label><label><input type="radio" name="q1" value="the"> the</label><p class="answer" data-explanation="Article choice: “a” introduces one notebook when you are asking for any notebook, not a particular one."></p></fieldset>
+        <fieldset class="question"><legend>2. Your brother’s school bus arrives at 8 o’clock. Send a message: “He ___ to school at 8 o’clock.”</legend><label><input type="radio" name="q2" value="go"> go</label><label><input type="radio" name="q2" value="goes"> goes</label><p class="answer" data-explanation="Present simple, third-person form: “he” is one person, so “go” becomes “goes” when describing his usual routine."></p></fieldset>
+        <fieldset class="question"><legend>3. You are choosing a drink for Mia at a café. Say: “She ___ coffee in the evening, so tea is better.”</legend><label><input type="radio" name="q3" value="doesn't drink"> doesn’t drink</label><label><input type="radio" name="q3" value="doesn't drinks"> doesn’t drinks</label><p class="answer" data-explanation="Present simple negative: after “doesn’t”, the verb stays in its base form, so we say “doesn’t drink”."></p></fieldset>
+        <fieldset class="question"><legend>4. You are making Friday plans. Ask about your friend’s teammates: “___ they play football on Fridays?”</legend><label><input type="radio" name="q4" value="Do"> Do</label><label><input type="radio" name="q4" value="Does"> Does</label><p class="answer" data-explanation="Present simple question form: use “Do” with “they” when asking about a regular activity."></p></fieldset>
+        <fieldset class="question"><legend>5. Your classmates are comparing morning routines. Say: “We ___ eat breakfast before school.”</legend><label><input type="radio" name="q5" value="usually"> usually</label><label><input type="radio" name="q5" value="usually are"> usually are</label><p class="answer" data-explanation="Adverb of frequency placement: “usually” goes before the main verb “eat” to describe this regular routine."></p></fieldset>
+        <fieldset class="question"><legend>6. A neighbour asks when you study. Reply: “I do my homework ___ the evening.”</legend><label><input type="radio" name="q6" value="in"> in</label><label><input type="radio" name="q6" value="at"> at</label><p class="answer" data-explanation="Time expression: we say “in the evening” for this part of the day."></p></fieldset>
         <button type="submit">Check my answers</button><button type="reset" class="secondary">Try again</button>
         <p id="result" aria-live="polite"></p>
       </form>
@@ -68,7 +68,16 @@
         const chosen = quiz.elements[name].value;
         const item = quiz.elements[name][0].closest('.question');
         item.classList.toggle('correct', chosen === answer); item.classList.toggle('incorrect', chosen && chosen !== answer);
-        if (chosen === answer) score += 1; item.querySelector('.answer').classList.add('visible');
+        const feedback = item.querySelector('.answer');
+        if (chosen === answer) {
+          score += 1;
+          feedback.innerHTML = `<strong>Correct.</strong> ${feedback.dataset.explanation}`;
+        } else if (chosen) {
+          feedback.innerHTML = `<strong>Try again.</strong> ${feedback.dataset.explanation}`;
+        } else {
+          feedback.innerHTML = '<strong>Choose an answer first.</strong>';
+        }
+        feedback.classList.add('visible');
       });
       document.querySelector('#result').textContent = `You got ${score} out of ${Object.keys(answers).length}. Review the explanations, then try again if you want more practice.`;
     });
